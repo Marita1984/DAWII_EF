@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:mysql://database:3306/examenfinal?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      dialect: org.hibernate.dialect.MySQLDialect5
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 84048166539-k0j68ceb01bt5eqg8afgfqlalb9b4fel.apps.googleusercontent.com
+            client-secret:	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
+            scope: profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+server:
+  port: 8082
+  
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
